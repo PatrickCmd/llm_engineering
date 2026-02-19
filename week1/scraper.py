@@ -1,5 +1,8 @@
 from bs4 import BeautifulSoup
+from numpy.char import title
 import requests
+
+from playwright_scraper import scrape as playwright_scrape
 
 
 # Standard headers to fetch a website
@@ -23,6 +26,23 @@ def fetch_website_contents(url):
     else:
         text = ""
     return (title + "\n\n" + text)[:2_000]
+
+
+def playwright_fetch_website_contents(url):
+    """
+    Return the title and contents of the website at the given url;
+    truncate to 10,000 characters as a sensible limit
+    """
+    try:
+        data = playwright_scrape(url, wait_for="domcontentloaded", timeout=120000)  # Increase timeout for slower pages
+        title = data["title"] if data["title"] else ""
+        text = data["content"] if data["content"] else ""
+    except Exception as e:
+        print(f"Playwright scraping failed for {url} with error: {e}")
+        title = ""
+        text = ""
+
+    return (title + "\n\n" + text)[:10_000]
 
 
 def fetch_website_links(url):
