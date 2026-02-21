@@ -1,0 +1,115 @@
+OpenAI Brochure
+
+---
+
+About OpenAI
+
+OpenAI is a pioneering AI research and deployment company with a mission to ensure that artificial general intelligence (AGI)—highly autonomous systems capable of outperforming humans at most economically valuable work—benefits all of humanity. Founded in 2015, OpenAI combines cutting-edge research with real-world deployment to accelerate the path toward safe and beneficial AI for everyone.
+
+OpenAI operates as a hybrid organization, consisting of the nonprofit OpenAI Foundation and the for-profit OpenAI Group, governed to prioritize broad societal benefits and transparency. Their vision advocates global cooperation, long-term safety, and leadership in AI technology to ensure AGI's responsible development.
+
+---
+
+Company Culture & Values
+
+OpenAI’s culture is grounded in deep responsibility, ambition, and a people-first approach:
+- Humanity first: Building AI to elevate lives and societies worldwide.
+- Act with humility: Recognizing knowledge limits and openness to new ideas.
+- Feel the AGI: Embracing creativity and discipline to responsibly build transformative AI.
+- Ship joy: Developing joyful, optimistic products for the future.
+
+Operating principles further encourage:
+- Finding creative ways to solve meaningful problems.
+- Emphasizing creativity over strict control.
+- Iterative learning and adaptability.
+- Intense focus and resilience to make impactful decisions.
+
+OpenAI fosters well-being with comprehensive benefits, including health insurance, mental health support, generous parental leave, family planning coverage, paid time off, and professional development stipends. Employees enjoy a collaborative atmosphere with resource groups, regular team celebrations, and coaching sessions.
+
+---
+
+Products & Technologies
+
+OpenAI builds advanced AI models and tools across multiple domains:
+- GPT Series: Industry-leading language models like GPT-5.2 and GPT-5.3-Codex for versatile, high-performance text generation, understanding, and reasoning.
+- Codex: An AI coding partner that assists in building, debugging, and shipping software, with specialized multi-agent workflows.
+- Sora: A natively multimodal model for generating hyperrealistic videos with motion, sound, and characters from simple prompts.
+- OpenAI o-series: Reasoning models specialized in complex scientific, mathematical, and logical problem-solving.
+- Image & Audio AI: Models like DALL·E for image generation and Whisper for advanced speech recognition, enabling creative visual and voice applications.
+- API Platform: The fastest, most powerful API ecosystem supporting text, image, audio, and vision inputs for real-time AI applications.
+
+---
+
+Commitment to Safety
+
+Safety and responsibility are central to OpenAI’s work:
+- Building AI systems that teach right from wrong and filter harmful content.
+- Rigorous internal testing complemented by expert external evaluations.
+- Continuous improvement based on real-world feedback.
+- Focus on protecting vulnerable populations (children, privacy), preventing bias, combating misinformation, and safeguarding critical processes like elections.
+
+OpenAI openly shares system cards and research transparency for their models, detailing mitigation strategies for risks like misleading outputs, unauthorized likeness generation, and cybersecurity threats.
+
+---
+
+Customers and Use Cases
+
+OpenAI powers thousands of companies and industries, delivering billion-dollar impacts through AI:
+- Enterprise AI agents: Automate core workflows in finance, customer support, procurement, and operations with trusted, secure AI coworkers.
+- Healthcare: Accelerate diagnostics, research, and regulatory processes to improve patient outcomes.
+- Financial Services: Build trust, improve forecasting, and scale AI-native back offices.
+- Retail: Personalize shopping experiences and drive engagement.
+- Education: Enhance lesson planning and personalized tutoring.
+- Creative industries: Generate cinematic videos, content, and music with Sora and Codex.
+
+Notable customers like Taisei Corporation and Zillow leverage OpenAI’s technologies to innovate talent development and personalized search experiences.
+
+---
+
+Careers at OpenAI
+
+OpenAI seeks passionate, curious individuals from diverse backgrounds to develop safe, beneficial AI. Their recruitment emphasizes:
+- A commitment to benefiting all of humanity.
+- Embracing humility and rigorous scientific inquiry.
+- Creativity, adaptability, and intense focus.
+  
+Opportunities include:
+- Research, engineering, policy, and product roles.
+- OpenAI Residency program for researchers and engineers new to AI.
+- Internships and positions for emerging talent to contribute early in their careers.
+
+Benefits include comprehensive health coverage, mental health support, fertility and family planning, paid parental leave, learning stipends, employee resource groups, and a vibrant culture of collaboration and celebration.
+
+---
+
+OpenAI Foundation
+
+The nonprofit OpenAI Foundation governs the for-profit OpenAI Group to ensure mission alignment. It is one of the best-funded philanthropic organizations, focusing on:
+- Accelerating health breakthroughs for universal diagnostics and cures.
+- Supporting practical technical solutions to AI resilience.
+- Providing $50 million in grants to nonprofits working at AI’s intersection with public good.
+
+Their vision is built on broad accessibility and maximal societal benefit.
+
+---
+
+Brand and Legal
+
+OpenAI’s brand emphasizes clarity, inclusivity, and a future-forward tone:
+- The OpenAI wordmark and Blossom logo symbolize the intersection of humanity and technology.
+- Brand use is strictly governed to preserve integrity and avoid confusion regarding endorsements.
+- OpenAI Sans is their custom typeface balancing geometric precision with warm, approachable design.
+
+---
+
+Get Involved and Contact
+- Developers: Access APIs for GPT-5, Codex, Sora, and more with flexible pricing and comprehensive support.
+- Businesses: Deploy AI with enterprise-grade security, compliance (SOC 2, HIPAA), and custom integrations.
+- Startups: Join a community of ambitious builders with access to resources, events, and guidance.
+- Research Community: Engage with cutting-edge publications, residencies, and collaborations on frontier AI science.
+
+Visit OpenAI’s website, explore their extensive research and product documentation, or contact sales and careers teams to start your journey.
+
+---
+
+OpenAI © 2015-2026 | Dedicated to advancing AI that benefits all humanity.

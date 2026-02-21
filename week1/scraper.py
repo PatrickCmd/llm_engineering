@@ -3,6 +3,7 @@ from numpy.char import title
 import requests
 
 from playwright_scraper import scrape as playwright_scrape
+from playwright_scraper import get_links
 
 
 # Standard headers to fetch a website
@@ -43,6 +44,15 @@ def playwright_fetch_website_contents(url):
         text = ""
 
     return (title + "\n\n" + text)[:10_000]
+
+
+def playwright_fetch_website_links(url, include_external=False):
+    """
+    Return the links on the webiste at the given url
+    """
+    
+    links = get_links(url, wait_for="domcontentloaded", timeout=120000, include_external=include_external)
+    return [link["href"] for link in links["links"]]
 
 
 def fetch_website_links(url):
