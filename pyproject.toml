@@ -53,4 +53,5 @@ dependencies = [
     "playwright>=1.58.0",
     "nest-asyncio>=1.6.0",
     "markdown-it-py[plugins]>=4.0.0",
+    "typer>=0.20.0",
 ]

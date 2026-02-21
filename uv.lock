@@ -2574,6 +2574,7 @@ dependencies = [
     { name = "torch" },
     { name = "tqdm" },
     { name = "transformers" },
+    { name = "typer" },
     { name = "wandb" },
     { name = "xgboost" },
 ]
@@ -2628,6 +2629,7 @@ requires-dist = [
     { name = "torch", specifier = ">=2.8.0" },
     { name = "tqdm", specifier = ">=4.67.1" },
     { name = "transformers", specifier = ">=4.56.2" },
+    { name = "typer", specifier = ">=0.20.0" },
     { name = "wandb", specifier = ">=0.22.1" },
     { name = "xgboost", specifier = ">=3.1.1" },
 ]
