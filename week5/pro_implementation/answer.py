@@ -1,3 +1,4 @@
+import os
 from openai import OpenAI
 from dotenv import load_dotenv
 from chromadb import PersistentClient
@@ -8,9 +9,15 @@ from tenacity import retry, wait_exponential
 
 
 load_dotenv(override=True)
+openrouter_api_key = os.getenv('OPENROUTER_API_KEY')
 
-# MODEL = "openai/gpt-4.1-nano"
-MODEL = "groq/openai/gpt-oss-120b"
+MODEL = "openai/gpt-4.1-mini"
+OPENROUTER_MODEL = "openai/gpt-oss-120b"
+# MODEL = "groq/openai/gpt-oss-120b"
+openrouter_url = "https://openrouter.ai/api/v1"
+openrouter = OpenAI(api_key=openrouter_api_key, base_url=openrouter_url)
+
+
 DB_NAME = str(Path(__file__).parent.parent / "preprocessed_db")
 KNOWLEDGE_BASE_PATH = Path(__file__).parent.parent / "knowledge-base"
 SUMMARIES_PATH = Path(__file__).parent.parent / "summaries"
@@ -141,5 +148,6 @@ def answer_question(question: str, history: list[dict] = []) -> tuple[str, list]
     """
     chunks = fetch_context(question)
     messages = make_rag_messages(question, history, chunks)
-    response = completion(model=MODEL, messages=messages)
+    # response = completion(model=MODEL, messages=messages)
+    response = openrouter.chat.completions.create(model=OPENROUTER_MODEL, messages=messages)
     return response.choices[0].message.content, chunks

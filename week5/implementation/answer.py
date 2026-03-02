@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-MODEL = "gpt-4.1-nano"
+MODEL = "gpt-4.1-mini"
 DB_NAME = str(Path(__file__).parent.parent / "vector_db")
 
 # embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
@@ -51,6 +51,7 @@ def answer_question(question: str, history: list[dict] = []) -> tuple[str, list[
     Answer the given question with RAG; return the answer and the context documents.
     """
     combined = combined_question(question, history)
+    print(f"Combined question: {combined}")
     docs = fetch_context(combined)
     context = "\n\n".join(doc.page_content for doc in docs)
     system_prompt = SYSTEM_PROMPT.format(context=context)
