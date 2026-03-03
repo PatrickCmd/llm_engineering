@@ -179,6 +179,7 @@ class Tester:
         final_mean = running_means[-1]
         final_ci = ci[-1]
         title = f"{self.title} Error: ${final_mean:,.2f} ± ${final_ci:,.2f}"
+        # print(f"title: {title}")
 
         fig.update_layout(
             title=title,
