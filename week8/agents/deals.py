@@ -11,6 +11,11 @@ feeds = [
     "https://www.dealnews.com/c142/Electronics/?rss=1",
     "https://www.dealnews.com/c39/Computers/?rss=1",
     "https://www.dealnews.com/f1912/Smart-Home/?rss=1",
+    "https://www.dealnews.com/c238/Automotive/?rss=1",
+    # "https://www.dealnews.com/c196/Home-Garden/?rss=1",
+    # "https://www.dealnews.com/c211/Sports-Fitness/?rss=1",
+    # "https://www.dealnews.com/c206/Travel-Entertainment/?rss=1",
+
 ]
 
 # You could also add: "https://www.dealnews.com/c238/Automotive/?rss=1"
@@ -53,9 +58,11 @@ class ScrapedDeal:
         self.title = entry["title"]
         self.summary = extract(entry["summary"])
         self.url = entry["links"][0]["href"]
-        stuff = requests.get(self.url).content
-        soup = BeautifulSoup(stuff, "html.parser")
-        content = soup.find("div", class_="content-section").get_text()
+        response = requests.get(self.url, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.content, "html.parser")
+        content_div = soup.find("div", class_="content-section")
+        content = content_div.get_text() if content_div else self.summary
         content = content.replace("\nmore", "").replace("\n", " ")
         if "Features" in content:
             self.details, self.features = content.split("Features", 1)
@@ -94,7 +101,11 @@ class ScrapedDeal:
         for feed_url in feed_iter:
             feed = feedparser.parse(feed_url)
             for entry in feed.entries[:10]:
-                deals.append(cls(entry))
+                try:
+                    deals.append(cls(entry))
+                except (requests.RequestException, KeyError, AttributeError) as e:
+                    title = entry.get("title", "unknown")
+                    print(f"Skipping deal '{title}': {e}")
                 time.sleep(0.05)
         return deals
 
