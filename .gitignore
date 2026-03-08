@@ -197,9 +197,21 @@ wandb/
 week2/**/prices.db
 week4/main.cpp
 week4/main
+week4/main.c
+week4/main_c
+week4/main.class
 week4/main.exe
 week4/main.rs
-
+week4/main_rs
+week4/main.go
+week4/main_go
+week4/main_test.go
+week4/main_java
+week4/Main.java
+week4/main_java.class
+week4/main_java.jar
+week4/main_java.class
+week4/Main$LCG.class
 week5/preprocessed_db/
 week5/vector_db/
 

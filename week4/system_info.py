@@ -357,3 +357,141 @@ def rust_toolchain_info():
     info["env"]["RUSTUP_HOME"] = _maybe_default_home(info["env"]["RUSTUP_HOME"], ".rustup")
 
     return info
+
+
+def c_toolchain_info():
+    """
+    Return a dict with C-compiler-specific settings (distinct from the C++ focus
+    in _toolchain_block).  Covers gcc/clang for C, version strings, detected
+    standard support, and simple execution examples.
+    """
+    info = {
+        "installed": False,
+        "compilers": {},
+        "preferred_compiler": "",
+        "std_support": [],
+        "execution_examples": [],
+    }
+
+    for cc in ("gcc", "clang", "cc"):
+        path = _which(cc)
+        if not path:
+            continue
+        ver = _first_line(_run([path, "--version"]))
+        machine = _first_line(_run([path, "-dumpmachine"]))
+        info["compilers"][cc] = {
+            "path": path,
+            "version": ver,
+            "target_triple": machine,
+        }
+        if not info["preferred_compiler"]:
+            info["preferred_compiler"] = cc
+
+    if info["compilers"]:
+        info["installed"] = True
+        cc = info["preferred_compiler"]
+        path = info["compilers"][cc]["path"]
+        info["execution_examples"] = [
+            f'"{path}" -std=c17 -O3 main.c -o main_c',
+            "./main_c",
+        ]
+        for std in ("c11", "c17", "c23"):
+            test = _run([path, f"-std={std}", "-x", "c", "-E", "-", "/dev/null"])
+            if test is not None:
+                info["std_support"].append(std)
+
+    return info
+
+
+def go_toolchain_info():
+    """
+    Return a dict with Go toolchain information: binary path, version,
+    GOPATH, GOROOT, target OS/arch, and execution examples.
+    """
+    info = {
+        "installed": False,
+        "go": {"path": "", "version": ""},
+        "env": {
+            "GOPATH": "",
+            "GOROOT": "",
+            "GOOS": "",
+            "GOARCH": "",
+            "GOVERSION": "",
+        },
+        "execution_examples": [],
+    }
+
+    go_path = _which("go")
+    if not go_path:
+        return info
+
+    info["installed"] = True
+    info["go"]["path"] = go_path
+    info["go"]["version"] = _first_line(_run([go_path, "version"]))
+
+    env_out = _run([go_path, "env", "GOPATH", "GOROOT", "GOOS", "GOARCH", "GOVERSION"])
+    lines = env_out.splitlines()
+    keys = ["GOPATH", "GOROOT", "GOOS", "GOARCH", "GOVERSION"]
+    for i, key in enumerate(keys):
+        if i < len(lines):
+            info["env"][key] = lines[i].strip()
+
+    info["execution_examples"] = [
+        f'"{go_path}" build -o main_go main.go',
+        "./main_go",
+        f'"{go_path}" test -v',
+        f'"{go_path}" run main.go',
+    ]
+
+    return info
+
+
+def java_toolchain_info():
+    """
+    Return a dict with Java toolchain information: javac/java paths, versions,
+    JAVA_HOME, and execution examples.
+    """
+    info = {
+        "installed": False,
+        "java": {"path": "", "version": ""},
+        "javac": {"path": "", "version": ""},
+        "env": {"JAVA_HOME": os.environ.get("JAVA_HOME", "")},
+        "execution_examples": [],
+    }
+
+    java_path = _which("java")
+    javac_path = _which("javac")
+
+    if java_path:
+        info["java"]["path"] = java_path
+        ver = _first_line(_run([java_path, "-version"]))
+        if not ver:
+            ver = _first_line(_run(f'"{java_path}" -version 2>&1'))
+        info["java"]["version"] = ver
+
+    if javac_path:
+        info["javac"]["path"] = javac_path
+        info["javac"]["version"] = _first_line(_run([javac_path, "-version"]))
+
+    info["installed"] = bool(java_path and javac_path)
+
+    if not info["env"]["JAVA_HOME"]:
+        if platform.system() == "Darwin":
+            jh = _run("/usr/libexec/java_home 2>/dev/null")
+            if jh:
+                info["env"]["JAVA_HOME"] = jh
+        elif platform.system() == "Linux" and java_path:
+            real = os.path.realpath(java_path)
+            candidate = os.path.dirname(os.path.dirname(real))
+            if os.path.isdir(os.path.join(candidate, "lib")):
+                info["env"]["JAVA_HOME"] = candidate
+
+    if info["installed"]:
+        info["execution_examples"] = [
+            f'"{javac_path}" Main.java',
+            f'"{java_path}" Main',
+            f'"{javac_path}" MainTest.java',
+            f'"{java_path}" MainTest',
+        ]
+
+    return info

@@ -57,4 +57,28 @@ CSS = """
   justify-content: center;
   align-items: center;
 }
+
+/* Test panel styling */
+.test-btn button {
+  background: #1a3a2a !important;
+  border-color: rgba(34,197,94,.35) !important;
+  color: #22c55e !important;
+  font-weight: 700;
+}
+.test-btn button:hover { box-shadow: 0 0 0 2px #22c55e inset; }
+
+.test-out textarea {
+  background: linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.10));
+  border: 1px solid rgba(34,197,94,.35) !important;
+  color: rgba(34,197,94,1) !important;
+  font-weight: 600;
+}
+
+/* Target language output */
+.lang-out textarea {
+  background: linear-gradient(180deg, rgba(236,173,10,.22), rgba(236,173,10,.12));
+  border: 1px solid rgba(236,173,10,.45) !important;
+  color: rgba(236,173,10,1) !important;
+  font-weight: 600;
+}
 """
