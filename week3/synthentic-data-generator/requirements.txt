@@ -1,0 +1,7 @@
+openai
+gradio
+pandas
+pydantic
+python-dotenv
+datasets
+huggingface_hub
