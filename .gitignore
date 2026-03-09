@@ -202,6 +202,8 @@ week4/main.rs
 
 week5/preprocessed_db/
 week5/vector_db/
+week5/arxiv-knowledge-base/arxiv_db/
+week5/arxiv-knowledge-base/arxiv_papers/
 
 
 local/
